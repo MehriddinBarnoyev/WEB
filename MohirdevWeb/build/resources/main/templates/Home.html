@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello Mohirdev</h1>
+</body>
+</html>
+
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script>
+    var socked = new WebSocket("/websocket-connection");
+    stompClient = Stomp.over(socked);
+    stompClient.connect({}, function (frame){
+        stompClient.subscribe("/topic/date", function (payload){
+            console.log(payload)
+        })
+    })
+</script>
